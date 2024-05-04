@@ -1,11 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import img from '../../assets/images/login/login.svg';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
 
     const { createUser } = useContext(AuthContext);
+    const [registerError, setRegisterError] = useState('');
+    const [success, setSuccess] = useState('');
+    const navigate = useNavigate();
+
 
     const handleSignUP = event => {
         event.preventDefault();
@@ -16,12 +21,29 @@ const SignUp = () => {
         const password = form.password.value;
         console.log(name, email, password);
 
+        setRegisterError('');
+        setSuccess('');
+
         createUser(email, password)
             .then(result => {
-                const user = result.user;
-                console.log(user);
+                console.log(result.user)
+                Swal.fire({
+                    title: "Register Successful !",
+                    text: "You clicked the button!",
+                    icon: "success"
+                });
+                event.target.reset();
+                navigate(location?.state ? location.state : '/')
             })
-
+            .catch(error => {
+                console.error(error)
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: (error.message.slice(9))
+                });
+            })
     }
 
     return (
@@ -55,7 +77,7 @@ const SignUp = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <input className='btn btn-primary' type="submit" value="Login" />
+                            <input className='btn btn-primary' type="submit" value="Sign Up" />
                         </div>
                     </form>
                     <p className='mr-4 text-center pb-6'>Already have an account? <Link className='text-orange-700' to="/login">Login</Link></p>

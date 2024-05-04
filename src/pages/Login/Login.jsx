@@ -1,11 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
-    const { singIn } = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
+
+    const [loginError, setLoginError] = useState('');
+    const [success, setSuccess] = useState('');
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log('location login', location);
 
     const handleLogin = event => {
         event.preventDefault();
@@ -15,12 +23,30 @@ const Login = () => {
         const password = form.password.value;
         console.log(email, password);
 
-        singIn(email, password)
+        setLoginError('');
+        setSuccess('');
+
+
+        signIn(email, password)
             .then(result => {
-                const user = result.user;
-                console.log(user);
+                console.log(result.user)
+                Swal.fire({
+                    title: "Login Successful !",
+                    text: "You clicked the button!",
+                    icon: "success"
+                });
+                event.target.reset();
+                navigate(location?.state ? location.state : '/')
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.error(error)
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: (error.message.slice(9, 41))
+                });
+            })
     }
 
 

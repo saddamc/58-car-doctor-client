@@ -40,7 +40,7 @@ const Bookservice = () => {
                 if (data.insertedId) {
                     Swal.fire({
                         icon: "success",
-                        title: "Your work has been saved",
+                        title: "Order Submitted Successfully",
                         showConfirmButton: false,
                         timer: 1500
                     });
