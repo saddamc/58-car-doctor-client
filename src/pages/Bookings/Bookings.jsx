@@ -29,17 +29,20 @@ const Bookings = () => {
                                 </label>
                             </th>
                             <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Service</th>
+                            <th>Date</th>
                             <th>Price</th>
-                            <th></th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         {/* row 1 */}
 
                         {
-                            bookings.map(booking => <BookingRow key={booking._id} booking={booking}></BookingRow>)
+                            bookings.map(booking => <BookingRow key={booking._id} booking={booking}
+                                bookings={bookings}
+                                setBookings={setBookings}
+                            ></BookingRow>)
                         }
 
 
