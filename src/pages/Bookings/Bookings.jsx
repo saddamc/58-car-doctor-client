@@ -12,12 +12,12 @@ const Bookings = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setBookings(data))
-    }, [])
+    }, [url])
 
 
     return (
-        <div>
-            <h2 className="text-5xl"> Your bookings:{bookings.length} </h2>
+        <div className="pb-24">
+            <h2 className="text-5xl mx-auto text-center font-bold my-12"> Your Booking List: <span className="text-green-700">{bookings.length}</span> </h2>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
