@@ -1,18 +1,22 @@
-import { useEffect, useState } from "react";
 import ServiceCard from "./ServiceCard";
 import { SlCalender } from "react-icons/sl";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { FaMapMarkedAlt } from "react-icons/fa";
+import { useLoaderData } from "react-router-dom";
 
 
 const Services = () => {
-    const [services, setServices] = useState([]);
+    const service = useLoaderData();
+    console.log(service)
 
-    useEffect(() => {
-        fetch('services.json')
-            .then(res => res.json())
-            .then(data => setServices(data))
-    }, [])
+
+    // const [service, setService] = useState([]);
+
+    // useEffect(() => {
+    //     fetch('services.json')
+    //         .then(res => res.json())
+    //         .then(data => setService(data))
+    // }, [])
 
     return (
         <div className="my-12">
@@ -24,9 +28,9 @@ const Services = () => {
             </div>
             <div className="grid grid-cols-1 md:gird-cols-2 lg:grid-cols-3 gap-6">
                 {
-                    services.map(service => <ServiceCard
-                        key={service._id}
-                        service={service}
+                    service.map(services => <ServiceCard
+                        key={services._id}
+                        services={services}
                     ></ServiceCard>)
                 }
             </div>
