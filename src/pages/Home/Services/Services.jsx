@@ -9,7 +9,7 @@ const Services = () => {
     const service = useLoaderData();
     console.log(service)
 
-
+    // now data load from server mongoDB
     // const [service, setService] = useState([]);
 
     // useEffect(() => {
@@ -26,7 +26,7 @@ const Services = () => {
                 <p className="w-[600px] mx-auto ">the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable. </p>
 
             </div>
-            <div className="grid grid-cols-1 md:gird-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-6">
                 {
                     service.map(services => <ServiceCard
                         key={services._id}

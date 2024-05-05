@@ -3,6 +3,7 @@ import img from '../../assets/images/login/login.svg';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const Login = () => {
 
@@ -21,7 +22,7 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        // console.log(email, password);
 
         setLoginError('');
         setSuccess('');
@@ -29,14 +30,32 @@ const Login = () => {
 
         signIn(email, password)
             .then(result => {
-                console.log(result.user)
-                Swal.fire({
-                    title: "Login Successful !",
-                    text: "You clicked the button!",
-                    icon: "success"
-                });
-                event.target.reset();
-                navigate(location?.state ? location.state : '/')
+                const loggedInUser = result.user;
+                console.log(loggedInUser)
+                const user = { email }
+                // Swal.fire({
+                //     title: "Login Successful !",
+                //     text: "You clicked the button!",
+                //     icon: "success"
+                // });
+                // event.target.reset();
+                // navigate(location?.state ? location?.state : '/')
+
+
+                // get access token
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.success) {
+                            Swal.fire({
+                                title: "Login Successful !",
+                                text: "You clicked the button!",
+                                icon: "success"
+                            });
+                            navigate(location?.state ? location?.state : '/')
+                        }
+                    })
+
             })
             .catch(error => {
                 console.error(error)

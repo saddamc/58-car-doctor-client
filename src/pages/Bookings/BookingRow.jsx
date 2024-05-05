@@ -5,7 +5,7 @@ const BookingRow = ({ booking, bookings, setBookings }) => {
     const { _id, date, service, price, img, status } = booking;
 
     const handleDelete = id => {
-        const proceed = confirm('Are you sure you want to delete');
+        const proceed = confirm('Are you sure you want to delete Booking');
         if (proceed) {
             fetch(`http://localhost:5000/bookings/${id}`, {
                 method: 'DELETE',
@@ -15,8 +15,7 @@ const BookingRow = ({ booking, bookings, setBookings }) => {
                     console.log(data);
                     if (data.deletedCount > 0) {
                         Swal.fire({
-                            title: "Deleted!",
-                            text: "Your file has been deleted.",
+                            title: "Booking Removed Successfully !",
                             icon: "success"
                         });
                         const remaining = bookings.filter(booking => booking._id !== id);
