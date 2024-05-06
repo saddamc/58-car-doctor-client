@@ -22,8 +22,8 @@ const Bookings = () => {
 
 
     return (
-        <div className="pb-24">
-            <h2 className="text-5xl mx-auto text-center font-bold my-12"> Your Booking List: <span className="text-green-700">{bookings.length}</span> </h2>
+        <div className="py-12">
+            <h2 className="text-5xl mx-auto text-center font-bold mb-12"> Your Booking List: <span className="text-green-700">{bookings.length}</span> </h2>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

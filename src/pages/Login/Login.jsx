@@ -48,8 +48,7 @@ const Login = () => {
                         console.log(res.data)
                         if (res.data.success) {
                             Swal.fire({
-                                title: "Login Successful !",
-                                text: "You clicked the button!",
+                                title: "Login Successfully !",
                                 icon: "success"
                             });
                             navigate(location?.state ? location?.state : '/')
