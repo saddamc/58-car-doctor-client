@@ -4,9 +4,10 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+// import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-
+    // const { signIn } = useAuth();
     const { signIn } = useContext(AuthContext);
 
     const [loginError, setLoginError] = useState('');

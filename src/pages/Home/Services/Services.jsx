@@ -6,10 +6,11 @@ import { useLoaderData } from "react-router-dom";
 
 
 const Services = () => {
+    // now data load from server mongoDB
     const service = useLoaderData();
     console.log(service)
 
-    // now data load from server mongoDB
+
     // const [service, setService] = useState([]);
 
     // useEffect(() => {
