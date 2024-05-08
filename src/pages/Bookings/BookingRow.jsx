@@ -7,7 +7,7 @@ const BookingRow = ({ booking, bookings, setBookings }) => {
     const handleDelete = id => {
         const proceed = confirm('Are you sure you want to delete Booking');
         if (proceed) {
-            fetch(`http://localhost:5000/bookings/${id}`, {
+            fetch(`https://58-car-doctor-server.vercel.app/bookings/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())
@@ -27,7 +27,7 @@ const BookingRow = ({ booking, bookings, setBookings }) => {
     }
     // order confirm
     const handleConfirm = id => {
-        fetch(`http://localhost:5000/bookings/${id}`, {
+        fetch(`https://58-car-doctor-server.vercel.app/bookings/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

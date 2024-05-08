@@ -11,7 +11,7 @@ const Bookings = () => {
 
     const axiosSecure = useAxiosSecure();
 
-    // const url = `http://localhost:5000/bookings?email=${user?.email}`;
+    // const url = `https://58-car-doctor-server.vercel.app/bookings?email=${user?.email}`;
     const url = `/bookings?email=${user?.email}`;
 
     useEffect(() => {

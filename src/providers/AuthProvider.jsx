@@ -28,8 +28,8 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             // continue 02 start
-            // const userEmail = currentUser?.email || user.email;
-            // const loggedUser = { email: userEmail };
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: userEmail };
             // end
 
             setUser(currentUser);
@@ -40,14 +40,14 @@ const AuthProvider = ({ children }) => {
             // if user exists then issue token here code start for =>  token login & signup(auth related)
             if (currentUser) {
 
-                axios.post('http://localhost:5000/jwt', /**loggedUser,*/  { withCredentials: true })
+                axios.post('https://58-car-doctor-server.vercel.app/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log('token response', res.data);
                     })
             }
             // continue 02: start
             else {
-                axios.post('http://localhost:5000/logout', /**loggedUser,*/  {
+                axios.post('https://58-car-doctor-server.vercel.app/logout', loggedUser, {
                     withCredentials: true
                 })
                     .then(res => {
