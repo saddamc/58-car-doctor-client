@@ -30,24 +30,24 @@ const AuthProvider = ({ children }) => {
             // continue 02 start
             // const userEmail = currentUser?.email || user.email;
             // const loggedUser = { email: userEmail };
-
             // end
+
             setUser(currentUser);
             console.log('current user', currentUser)
             setLoading(false);
 
 
-            // if user exists then issue anpm  token here code start for =>  token login & signup(auth related)
+            // if user exists then issue token here code start for =>  token login & signup(auth related)
             if (currentUser) {
 
-                axios.post('http://localhost:5000/jwt', /**loggedUser,*/ { withCredentials: true })
+                axios.post('http://localhost:5000/jwt', /**loggedUser,*/  { withCredentials: true })
                     .then(res => {
                         console.log('token response', res.data);
                     })
             }
             // continue 02: start
             else {
-                axios.post('http://localhost:5000/logout', /**loggedUser,*/ {
+                axios.post('http://localhost:5000/logout', /**loggedUser,*/  {
                     withCredentials: true
                 })
                     .then(res => {

@@ -2,13 +2,18 @@ import ServiceCard from "./ServiceCard";
 import { SlCalender } from "react-icons/sl";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { FaMapMarkedAlt } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import useServices from "../../../hooks/useServices";
 
 
 const Services = () => {
     // now data load from server mongoDB
-    const service = useLoaderData();
-    console.log(service)
+    /** now use useHook => 02 lastest version */
+    const service = useServices();
+
+    /**load from home by use fetch => 1 */
+    // const service = useLoaderData();
+    // console.log(service)
+
 
 
     // const [service, setService] = useState([]);
