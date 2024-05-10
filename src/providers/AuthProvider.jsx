@@ -33,21 +33,21 @@ const AuthProvider = ({ children }) => {
             // end
 
             setUser(currentUser);
-            console.log('current user', currentUser)
+            // console.log('current user', currentUser)
             setLoading(false);
 
 
             // if user exists then issue token here code start for =>  token login & signup(auth related)
             if (currentUser) {
 
-                axios.post('https://58-car-doctor-server.vercel.app/jwt', loggedUser, { withCredentials: true })
+                axios.post('https://car-doctor-server-six-lake.vercel.app/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log('token response', res.data);
                     })
             }
             // continue 02: start
             else {
-                axios.post('https://58-car-doctor-server.vercel.app/logout', loggedUser, {
+                axios.post('https://car-doctor-server-six-lake.vercel.app/logout', loggedUser, {
                     withCredentials: true
                 })
                     .then(res => {

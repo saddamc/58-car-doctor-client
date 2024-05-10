@@ -15,7 +15,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('https://58-car-doctor-server.vercel.app/services'),
+                loader: () => fetch('https://car-doctor-server-six-lake.vercel.app/services'),
             },
 
             {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
             {
                 path: '/book/:id',
                 element: <PrivateRoute><Bookservice></Bookservice></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://58-car-doctor-server.vercel.app/services/${params.id}`),
+                loader: ({ params }) => fetch(`https://car-doctor-server-six-lake.vercel.app/services/${params.id}`),
             },
             {
                 path: '/bookings',

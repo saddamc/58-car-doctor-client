@@ -25,9 +25,9 @@ const Bookservice = () => {
             service_id: _id,
             price: price
         }
-        console.log(booking);
+        // console.log(booking);
 
-        fetch('https://58-car-doctor-server.vercel.app/bookings', {
+        fetch('https://car-doctor-server-six-lake.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -36,7 +36,7 @@ const Bookservice = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
                         icon: "success",

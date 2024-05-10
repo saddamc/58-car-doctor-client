@@ -7,12 +7,12 @@ const BookingRow = ({ booking, bookings, setBookings }) => {
     const handleDelete = id => {
         const proceed = confirm('Are you sure you want to delete Booking');
         if (proceed) {
-            fetch(`https://58-car-doctor-server.vercel.app/bookings/${id}`, {
+            fetch(`https://car-doctor-server-six-lake.vercel.app/bookings/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    // console.log(data);
                     if (data.deletedCount > 0) {
                         Swal.fire({
                             title: "Booking Removed Successfully !",
@@ -27,7 +27,7 @@ const BookingRow = ({ booking, bookings, setBookings }) => {
     }
     // order confirm
     const handleConfirm = id => {
-        fetch(`https://58-car-doctor-server.vercel.app/bookings/${id}`, {
+        fetch(`https://car-doctor-server-six-lake.vercel.app/bookings/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -36,7 +36,7 @@ const BookingRow = ({ booking, bookings, setBookings }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.modifiedCount > 0) {
                     // update state
                     const remaining = bookings.filter(booking => booking._id !== id);

@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import BookingRow from "./BookingRow";
-import axios from "axios";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
@@ -11,7 +10,7 @@ const Bookings = () => {
 
     const axiosSecure = useAxiosSecure();
 
-    // const url = `https://58-car-doctor-server.vercel.app/bookings?email=${user?.email}`;
+    // const url = `https://car-doctor-server-six-lake.vercel.app/bookings?email=${user?.email}`;
     const url = `/bookings?email=${user?.email}`;
 
     useEffect(() => {
